@@ -9,11 +9,17 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author 小尘哥
  * @date 2022/08/22
+ * @version $Id: $Id
  */
 @Configuration
 @ConditionalOnClass
 public class SensitiveConfig {
 
+    /**
+     * <p>sensitiveProp.</p>
+     *
+     * @return a {@link com.mos.secure.ext.test.config.SensitiveProp} object.
+     */
     @Bean
     public SensitiveProp sensitiveProp() {
         return new SensitiveProp();

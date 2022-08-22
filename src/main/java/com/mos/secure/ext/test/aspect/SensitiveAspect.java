@@ -22,6 +22,7 @@ import java.util.List;
  *
  * @author 小尘哥
  * @date 2022/08/22
+ * @version $Id: $Id
  */
 @Aspect
 @Slf4j
@@ -31,6 +32,7 @@ public class SensitiveAspect {
     @Resource
     private SensitiveProp sensitiveProp;
 
+    /** Constant <code>ENABLE=true</code> */
     public static final boolean ENABLE = true;
 
     /**
@@ -42,6 +44,10 @@ public class SensitiveAspect {
 
     /**
      * 注解脱敏处理
+     *
+     * @param joinPoint a {@link org.aspectj.lang.ProceedingJoinPoint} object.
+     * @return a {@link java.lang.Object} object.
+     * @throws java.lang.Throwable if any.
      */
     @Around("getPoint()")
     public Object sensitiveClass(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -59,6 +65,10 @@ public class SensitiveAspect {
 
     /**
      * 注解统一拦截器
+     *
+     * @param joinPoint a {@link org.aspectj.lang.ProceedingJoinPoint} object.
+     * @return a {@link java.lang.Object} object.
+     * @throws java.lang.Throwable if any.
      */
     public Object sensitiveFormat(ProceedingJoinPoint joinPoint) throws Throwable {
         Object obj = joinPoint.proceed();

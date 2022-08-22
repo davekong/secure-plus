@@ -9,6 +9,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  *
  * @author 小尘哥
  * @date 2022/08/22
+ * @version $Id: $Id
  */
 @EnableConfigurationProperties(SensitiveProp.class)
 @ConfigurationProperties(prefix = "sensitive")

@@ -10,10 +10,18 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author 小尘哥
  * @date 2022/08/22
+ * @version $Id: $Id
  */
 @Slf4j
 public class MosDesensitizedUtil {
 
+    /**
+     * <p>desensitizeData.</p>
+     *
+     * @param obj a {@link java.lang.Object} object.
+     * @param desensitizationProp a {@link com.mos.secure.ext.test.annotations.DesensitizationProp} object.
+     * @return a {@link java.lang.String} object.
+     */
     public static String desensitizeData(Object obj, DesensitizationProp desensitizationProp) {
         if (obj == null || desensitizationProp == null) {
             return null;

@@ -6,6 +6,7 @@ package com.mos.secure.ext.test.enums;
  *
  * @author 小尘哥
  * @date 2022/08/10
+ * @version $Id: $Id
  */
 public enum SensitiveTypeEnum {
     /** 中文名 */
