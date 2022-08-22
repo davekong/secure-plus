@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
  * 脱敏配置初始化
  *
  * @author 小尘哥
- * @date 2022/08/22
  * @version $Id: $Id
  */
 @Configuration

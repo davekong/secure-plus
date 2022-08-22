@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * 脱敏配置属性
  *
  * @author 小尘哥
- * @date 2022/08/22
  * @version $Id: $Id
  */
 @EnableConfigurationProperties(SensitiveProp.class)

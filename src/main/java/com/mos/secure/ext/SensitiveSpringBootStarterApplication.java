@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 敏感starter应用程序
  *
  * @author 小尘哥
- * @date 2022/08/09
  * @version $Id: $Id
  */
 @SpringBootApplication

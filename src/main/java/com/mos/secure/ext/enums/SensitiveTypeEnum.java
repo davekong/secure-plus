@@ -5,7 +5,6 @@ package com.mos.secure.ext.enums;
  * 敏感枚举类型
  *
  * @author 小尘哥
- * @date 2022/08/10
  * @version $Id: $Id
  */
 public enum SensitiveTypeEnum {
