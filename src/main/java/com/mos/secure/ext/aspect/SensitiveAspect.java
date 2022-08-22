@@ -1,9 +1,9 @@
-package com.mos.secure.ext.test.aspect;
+package com.mos.secure.ext.aspect;
 
-import com.mos.secure.ext.test.annotations.Desensitization;
-import com.mos.secure.ext.test.annotations.DesensitizationProp;
-import com.mos.secure.ext.test.config.SensitiveProp;
-import com.mos.secure.ext.test.util.MosDesensitizedUtil;
+import com.mos.secure.ext.annotations.Desensitization;
+import com.mos.secure.ext.annotations.DesensitizationProp;
+import com.mos.secure.ext.config.SensitiveProp;
+import com.mos.secure.ext.util.MosDesensitizedUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -38,7 +38,7 @@ public class SensitiveAspect {
     /**
      *  切点
      */
-    @Pointcut(value = "@annotation(com.mos.secure.ext.test.annotations.Desensitization)")
+    @Pointcut(value = "@annotation(com.mos.secure.ext.annotations.Desensitization)")
     public void getPoint() {
     }
 

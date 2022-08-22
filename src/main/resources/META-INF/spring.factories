@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\com.mos.secure.ext.test.config.SensitiveConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\com.mos.secure.ext.config.SensitiveConfig

@@ -1,8 +1,8 @@
-package com.mos.secure.ext.test.demo;
+package com.mos.secure.ext.demo;
 
 
-import com.mos.secure.ext.test.annotations.DesensitizationProp;
-import com.mos.secure.ext.test.enums.SensitiveTypeEnum;
+import com.mos.secure.ext.enums.SensitiveTypeEnum;
+import com.mos.secure.ext.annotations.DesensitizationProp;
 import lombok.Data;
 
 /**

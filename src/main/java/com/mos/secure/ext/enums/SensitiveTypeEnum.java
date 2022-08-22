@@ -1,4 +1,4 @@
-package com.mos.secure.ext.test.enums;
+package com.mos.secure.ext.enums;
 
 
 /**

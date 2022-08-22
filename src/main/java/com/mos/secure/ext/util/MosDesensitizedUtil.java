@@ -1,8 +1,8 @@
-package com.mos.secure.ext.test.util;
+package com.mos.secure.ext.util;
 
 import cn.hutool.core.util.DesensitizedUtil;
 import cn.hutool.core.util.StrUtil;
-import com.mos.secure.ext.test.annotations.DesensitizationProp;
+import com.mos.secure.ext.annotations.DesensitizationProp;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -19,7 +19,7 @@ public class MosDesensitizedUtil {
      * <p>desensitizeData.</p>
      *
      * @param obj a {@link java.lang.Object} object.
-     * @param desensitizationProp a {@link com.mos.secure.ext.test.annotations.DesensitizationProp} object.
+     * @param desensitizationProp a {@link DesensitizationProp} object.
      * @return a {@link java.lang.String} object.
      */
     public static String desensitizeData(Object obj, DesensitizationProp desensitizationProp) {

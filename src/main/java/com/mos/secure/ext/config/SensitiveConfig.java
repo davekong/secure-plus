@@ -1,4 +1,4 @@
-package com.mos.secure.ext.test.config;
+package com.mos.secure.ext.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ public class SensitiveConfig {
     /**
      * <p>sensitiveProp.</p>
      *
-     * @return a {@link com.mos.secure.ext.test.config.SensitiveProp} object.
+     * @return a {@link SensitiveProp} object.
      */
     @Bean
     public SensitiveProp sensitiveProp() {

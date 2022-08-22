@@ -1,6 +1,6 @@
-package com.mos.secure.ext.test.demo;
+package com.mos.secure.ext.demo;
 
-import com.mos.secure.ext.test.annotations.Desensitization;
+import com.mos.secure.ext.annotations.Desensitization;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
-package com.mos.secure.ext.test.annotations;
+package com.mos.secure.ext.annotations;
 
-import com.mos.secure.ext.test.enums.SensitiveTypeEnum;
+import com.mos.secure.ext.enums.SensitiveTypeEnum;
 
 import java.lang.annotation.*;
 
