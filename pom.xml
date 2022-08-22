@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.gitee.chemors</groupId>
     <artifactId>secure-ext-spring-boot-starter</artifactId>
-    <version>0.0.2-RELEASE</version>
+    <version>0.0.3-RELEASE</version>
     <name>secure-ext-spring-boot-starter</name>
     <description>secure-ext-spring-boot-starter</description>
     <url>https://gitee.com/chemors/secure-ext-spring-boot-starter</url>
@@ -15,9 +15,6 @@
         <hutool-all.version>5.8.5</hutool-all.version>
         <lombok.version>1.18.24</lombok.version>
     </properties>
-
-
-
 
     <dependencies>
         <dependency>
