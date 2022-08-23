@@ -14,6 +14,8 @@
 
 **内置丰富：** 内置多种默认类型，且可根据自身需求，支持自定义脱敏规则
 
+**自动化：** 支持深度脱敏，自动寻找返回值中嵌套对象包含的需脱敏的属性
+
 ## 3、最新版本
 [![Maven Central](https://img.shields.io/maven-metadata/v.svg?label=maven-central&metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fio%2Fgitee%2Fchemors%2Fsecure-ext-spring-boot-starter%2Fmaven-metadata.xml)](https://search.maven.org/artifact/io.gitee.chemors/secure-ext-spring-boot-starter)
 ## 4、使用步骤
@@ -28,7 +30,9 @@
 ### 4.2 开启脱敏注解
 ```yaml
 sensitive:
-  enable: true
+  enable: true # 默认为true
+  depth: false # 是否开启深度脱敏，默认false
+  packages: # 扫描包路径，默认为空
 ```
 ### 4.3 添加注解
 **注意：** 
