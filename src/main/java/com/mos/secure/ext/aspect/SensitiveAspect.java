@@ -31,9 +31,6 @@ public class SensitiveAspect {
     @Resource
     private SensitiveProp sensitiveProp;
 
-    /** Constant <code>ENABLE=true</code> */
-    public static final boolean ENABLE = true;
-
     /**
      *  切点
      */
