@@ -14,10 +14,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -74,11 +72,6 @@ public class SensitiveAspect {
     public Object sensitiveFormat(ProceedingJoinPoint joinPoint) throws Throwable {
         Object obj = joinPoint.proceed();
         dealNode(obj);
-      /*  if (obj instanceof List) {
-            dealList(obj);
-        }  else {
-            dealSimpleData(obj);
-        }*/
         return obj;
     }
 
@@ -88,20 +81,6 @@ public class SensitiveAspect {
             dealNode(obj);
         }
     }
-
-  /*  private void dealSimpleData(Object obj) throws IllegalAccessException {
-        Field[] fields = obj.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            DesensitizationProp desensitizationProp = field.getAnnotation(DesensitizationProp.class);
-            if (desensitizationProp == null) {
-                continue;
-            }
-            String v = MosDesensitizedUtil.desensitizeData(field.get(obj),desensitizationProp);
-            field.set(obj, v);
-        }
-    }*/
-
 
     public void dealNode(Object o) throws IllegalAccessException {
         if (o instanceof List){
@@ -116,16 +95,20 @@ public class SensitiveAspect {
         for (Field field : fields){
             field.setAccessible(true);
             String type = field.getGenericType().toString();
+            Object fieldValueObj = field.get(o);
+            if (fieldValueObj instanceof List){
+                dealList(fieldValueObj);
+            }
             // 递归子属性
             if (needDepthDeal && containType(type)){
-                dealNode(field.get(o));
+                dealNode(fieldValueObj);
             }
 
             DesensitizationProp desensitizationProp = field.getAnnotation(DesensitizationProp.class);
             if (desensitizationProp == null) {
                 continue;
             }
-            String v = MosDesensitizedUtil.desensitizeData(field.get(o),desensitizationProp);
+            String v = MosDesensitizedUtil.desensitizeData(fieldValueObj,desensitizationProp);
             field.set(o, v);
         }
     }
