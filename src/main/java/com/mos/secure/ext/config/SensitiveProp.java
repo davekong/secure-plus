@@ -15,5 +15,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @Data
 public class SensitiveProp {
 
-    Boolean   enable;
+    Boolean   enable = true;
+
+    Boolean   depth = false;
+
+    String   packages = null;
 }
