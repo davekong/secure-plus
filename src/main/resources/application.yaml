@@ -1,2 +1,4 @@
 sensitive:
   enable: true
+  depth: false
+  packages: com.mos.secure

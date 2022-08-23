@@ -1,5 +1,6 @@
 package com.mos.secure.ext.aspect;
 
+import cn.hutool.core.util.StrUtil;
 import com.mos.secure.ext.annotations.Desensitization;
 import com.mos.secure.ext.annotations.DesensitizationProp;
 import com.mos.secure.ext.config.SensitiveProp;
@@ -13,8 +14,10 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -59,6 +62,8 @@ public class SensitiveAspect {
         return sensitiveFormat(joinPoint);
     }
 
+
+
     /**
      * 注解统一拦截器
      *
@@ -68,26 +73,26 @@ public class SensitiveAspect {
      */
     public Object sensitiveFormat(ProceedingJoinPoint joinPoint) throws Throwable {
         Object obj = joinPoint.proceed();
-        if (obj instanceof List) {
+        dealNode(obj);
+      /*  if (obj instanceof List) {
             dealList(obj);
         }  else {
             dealSimpleData(obj);
-        }
+        }*/
         return obj;
     }
 
     private void dealList(Object o) throws IllegalAccessException {
         List<Object> list = (List<Object>) o;
         for (Object obj : list) {
-            dealSimpleData(obj);
+            dealNode(obj);
         }
     }
 
-    private void dealSimpleData(Object obj) throws IllegalAccessException {
+  /*  private void dealSimpleData(Object obj) throws IllegalAccessException {
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
-            // TODO: 2022/8/22 0022 递归子属性
             DesensitizationProp desensitizationProp = field.getAnnotation(DesensitizationProp.class);
             if (desensitizationProp == null) {
                 continue;
@@ -95,8 +100,47 @@ public class SensitiveAspect {
             String v = MosDesensitizedUtil.desensitizeData(field.get(obj),desensitizationProp);
             field.set(obj, v);
         }
+    }*/
+
+
+    public void dealNode(Object o) throws IllegalAccessException {
+        if (o instanceof List){
+            dealList(o);
+            return;
+        }
+        if (o == null){
+            return;
+        }
+        boolean needDepthDeal = sensitiveProp.getDepth() && !StrUtil.isBlankIfStr(sensitiveProp.getPackages());
+        Field[] fields = o.getClass().getDeclaredFields();
+        for (Field field : fields){
+            field.setAccessible(true);
+            String type = field.getGenericType().toString();
+            // 递归子属性
+            if (needDepthDeal && containType(type)){
+                dealNode(field.get(o));
+            }
+
+            DesensitizationProp desensitizationProp = field.getAnnotation(DesensitizationProp.class);
+            if (desensitizationProp == null) {
+                continue;
+            }
+            String v = MosDesensitizedUtil.desensitizeData(field.get(o),desensitizationProp);
+            field.set(o, v);
+        }
     }
 
+    private Boolean containType(String type){
+        String[] scanPackages = sensitiveProp.getPackages().split(",");
+        boolean isContainType = false;
+        for (String scanPackage : scanPackages){
+            if (type.contains(scanPackage)){
+                isContainType = true;
+                break;
+            }
+        }
+        return isContainType;
+    }
 
 
 }

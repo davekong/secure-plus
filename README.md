@@ -97,3 +97,13 @@ public Obj test(){
 ![输入图片说明](src/main/resources/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220823111833.jpg)
 ## 8、关注我
 ![欢迎关注公众号](https://images.gitee.com/uploads/images/2018/0726/081557_aa7756c9_660787.jpeg "陌与尘埃")
+
+## 9、更新日志
+* V1.0.0 
+> 基础版
+
+* V1.0.1
+> 支持复杂对象，多层嵌套属性自动脱敏
+
+* V1.0.2
+> 优化包引用
