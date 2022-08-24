@@ -111,3 +111,6 @@ public Obj test(){
 
 * V1.0.2
 > 优化包引用
+
+**javaDoc**
+[secure-ext-spring-boot-starter java doc](https://apidoc.gitee.com/chemors/secure-ext-spring-boot-starter)
