@@ -1,0 +1,5 @@
+server:
+  port: 8082
+sensitive:
+  depth: true
+  packages: io.gitee.chemors.secure.ext,com.chemors

@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>secure-ext-spring-boot</artifactId>
+        <groupId>io.gitee.chemors</groupId>
+        <version>1.0.3-RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>secure-ext-sensitive-demo</artifactId>
+    <packaging>jar</packaging>
+
+    <name>secure-ext-sensitive-demo</name>
+    <url>https://gitee.com/chemors/secure-ext-spring-boot-starter</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.gitee.chemors</groupId>
+            <artifactId>secure-ext-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
