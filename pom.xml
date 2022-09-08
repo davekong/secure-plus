@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.gitee.chemors</groupId>
     <artifactId>secure-ext-spring-boot</artifactId>
-    <version>1.0.3-RELEASE</version>
+    <version>1.0.4-RELEASE</version>
     <name>secure-ext-spring-boot</name>
     <description>secure-ext-spring-boot</description>
     <packaging>pom</packaging>

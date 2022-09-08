@@ -5,8 +5,7 @@ import io.gitee.chemors.secure.ext.annotations.Desensitization;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -20,7 +19,7 @@ public class SensitiveService {
     @Desensitization
     public List<SensitiveEntity> listData() {
         System.out.println("执行业务处理...");
-        List<SensitiveEntity> list = new ArrayList<SensitiveEntity>();
+        List<SensitiveEntity> list = new LinkedList<SensitiveEntity>();
         for (int i = 0; i < 5; i++) {
             SensitiveEntity sensitiveEntity = createEntity("1" + i, "樱木花道" + i, "15699996666" + i, "10101020000101000" + i);
             list.add(sensitiveEntity);
@@ -35,6 +34,16 @@ public class SensitiveService {
         page.setSize(10);
         page.setRecords(listData());
         return page;
+    }
+
+    @Desensitization
+    public Map mapData() {
+        Map m = new Hashtable();
+        SensitiveEntity sensitiveEntity = createEntity("1", "樱木花道", "15699996666", "101010200001010001");
+        m.put("entityFirst",sensitiveEntity);
+        SensitiveEntity sensitiveEntity2 = createEntity("2", "樱木花道2", "15699996666", "101010200001010002");
+        m.put("entitySecond",sensitiveEntity2);
+        return m;
     }
 
     private static SensitiveEntity createEntity(String i, String i1, String i2, String i3) {

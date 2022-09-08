@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 敏感控制器
@@ -38,5 +39,11 @@ public class SensitiveController {
     public String page() {
         Page page = sensitiveService.page();
         return JSONUtil.toJsonStr(page);
+    }
+
+    @GetMapping("map")
+    public String map() {
+        Map map = sensitiveService.mapData();
+        return JSONUtil.toJsonStr(map);
     }
 }

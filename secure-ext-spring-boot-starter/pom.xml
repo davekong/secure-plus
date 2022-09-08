@@ -4,7 +4,7 @@
     <parent>
         <artifactId>secure-ext-spring-boot</artifactId>
         <groupId>io.gitee.chemors</groupId>
-        <version>1.0.3-RELEASE</version>
+        <version>1.0.4-RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>secure-ext-spring-boot-starter</artifactId>

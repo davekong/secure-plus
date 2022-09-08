@@ -17,6 +17,8 @@ import javax.annotation.Resource;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 敏感方面
@@ -82,14 +84,33 @@ public class SensitiveAspect {
         }
     }
 
+    private void dealMap(Object o) throws IllegalAccessException {
+        Map map = (Map) o;
+        Set<Map.Entry> entries=map.entrySet();
+        for (Map.Entry entry:entries){
+            if (entry.getValue() instanceof List){
+                dealList(entry.getValue());
+            }else{
+                dealNode(entry.getValue());
+            }
+        }
+    }
+
     public void dealNode(Object o) throws IllegalAccessException {
+        if (o == null){
+            return;
+        }
+
         if (o instanceof List){
             dealList(o);
             return;
         }
-        if (o == null){
+
+        if (o instanceof Map){
+            dealMap(o);
             return;
         }
+
         boolean needDepthDeal = sensitiveProp.getDepth() && !StrUtil.isBlankIfStr(sensitiveProp.getPackages());
         Field[] fields = o.getClass().getDeclaredFields();
         for (Field field : fields){
