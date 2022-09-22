@@ -1,3 +1,7 @@
+/*
+ * Copyright (c)  小尘哥. 2022-2024. All rights reserved.
+ */
+
 package io.gitee.chemors.secure.ext.aspect;
 
 import cn.hutool.core.util.StrUtil;
