@@ -2,7 +2,7 @@
 <configuration debug="false">
 
 
-    <conversionRule conversionWord="msg" converterClass="io.gitee.chemors.secure.ext.log.core.LogBackCoreConverter"></conversionRule>
+    <conversionRule conversionWord="msg" converterClass="io.gitee.chemors.secure.ext.log.core.LogBackCoreConverter"/>
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -13,7 +13,7 @@
     </appender>
 
     <!-- 日志输出级别 -->
-    <root level="INFO">
+    <root level="info">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

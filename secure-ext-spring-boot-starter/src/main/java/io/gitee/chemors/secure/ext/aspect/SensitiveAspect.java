@@ -33,7 +33,7 @@ public class SensitiveAspect {
     private SensitiveProp sensitiveProp;
 
     /**
-     *  切点
+     * 切点
      */
     @Pointcut(value = "@annotation(io.gitee.chemors.secure.ext.annotations.Desensitization)")
     public void getPoint() {
@@ -48,18 +48,17 @@ public class SensitiveAspect {
      */
     @Around("getPoint()")
     public Object sensitiveClass(ProceedingJoinPoint joinPoint) throws Throwable {
-        if (!sensitiveProp.getEnable()){
+        if (!sensitiveProp.getEnable()) {
             return joinPoint.proceed();
         }
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
-        Desensitization desensitization =method.getAnnotation(Desensitization.class);
-        if (desensitization == null || !desensitization.enable()){
+        Desensitization desensitization = method.getAnnotation(Desensitization.class);
+        if (desensitization == null || !desensitization.enable()) {
             return joinPoint.proceed();
         }
         return sensitiveFormat(joinPoint);
     }
-
 
 
     /**

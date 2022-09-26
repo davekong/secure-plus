@@ -3,3 +3,5 @@ server:
 sensitive:
   depth: true
   packages: io.gitee.chemors.secure.ext,com.chemors
+  log-info:
+    enable: false

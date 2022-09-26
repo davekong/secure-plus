@@ -1,10 +1,13 @@
 package io.gitee.chemors.secure.ext.log.core;
 
+import io.gitee.chemors.secure.ext.config.SensitiveProp;
 import io.gitee.chemors.secure.ext.log.defender.LogBackDefender;
 import io.gitee.chemors.secure.ext.log.defender.SensitiveObjMessageDefender;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
+
+import javax.annotation.Resource;
 
 
 /**
@@ -17,11 +20,17 @@ import org.springframework.context.annotation.Configuration;
 @ImportAutoConfiguration(LogDefenderConfiguration.class)
 public class LogDefenderConfiguration implements SmartInitializingSingleton {
 
+    private SensitiveProp sensitiveProp;
+
+    public LogDefenderConfiguration(SensitiveProp sensitiveProp) {
+        this.sensitiveProp = sensitiveProp;
+    }
+
     @Override
     public void afterSingletonsInstantiated() {
         // 装配
         LogBackDefender defender;
-        defender = new SensitiveObjMessageDefender();
+        defender = new SensitiveObjMessageDefender(sensitiveProp);
         // 赋值给logback消息转换器
         LogBackCoreConverter.setDefender(defender);
     }

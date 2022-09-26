@@ -6,6 +6,7 @@ package io.gitee.chemors.secure.ext.util;
 
 import cn.hutool.core.util.StrUtil;
 import io.gitee.chemors.secure.ext.annotations.DesensitizationProp;
+import io.gitee.chemors.secure.ext.config.Constants;
 import io.gitee.chemors.secure.ext.config.SensitiveProp;
 
 import java.lang.reflect.Field;
@@ -80,7 +81,7 @@ public class FieldSensitiveUtil {
     }
 
     private static Boolean containType(String type,SensitiveProp sensitiveProp){
-        String[] scanPackages = sensitiveProp.getPackages().split(",");
+        String[] scanPackages = sensitiveProp.getPackages().split(Constants.PACKAGES_SPLIT);
         boolean isContainType = false;
         for (String scanPackage : scanPackages){
             if (type.contains(scanPackage)){

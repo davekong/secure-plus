@@ -19,6 +19,8 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass
 public class SensitiveConfig {
 
+
+
     /**
      * <p>sensitiveProp.</p>
      *
@@ -31,6 +33,6 @@ public class SensitiveConfig {
 
     @Bean
     public LogDefenderConfiguration logDefenderConfiguration(){
-        return new LogDefenderConfiguration();
+        return new LogDefenderConfiguration(sensitiveProp());
     }
 }

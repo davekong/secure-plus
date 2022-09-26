@@ -6,9 +6,9 @@ package io.gitee.chemors.secure.ext.log.defender;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import cn.hutool.json.JSONUtil;
+import io.gitee.chemors.secure.ext.config.Constants;
 import io.gitee.chemors.secure.ext.config.SensitiveProp;
 import io.gitee.chemors.secure.ext.util.FieldSensitiveUtil;
-import org.springframework.beans.BeanUtils;
 
 /**
  * 对象脱敏器
@@ -18,24 +18,29 @@ import org.springframework.beans.BeanUtils;
  */
 public class SensitiveObjMessageDefender implements LogBackDefender{
 
-    private SensitiveProp sensitiveProp = BeanUtils.instantiateClass(SensitiveProp.class);
+    private SensitiveProp sensitiveProp;
+
+    public SensitiveObjMessageDefender(SensitiveProp sensitiveProp) {
+        this.sensitiveProp = sensitiveProp;
+    }
 
     @Override
     public void desensitize(ILoggingEvent event,StringBuilder buffer) {
         String message = event.getMessage();
 
         Object[] objects = event.getArgumentArray();
-        if (objects == null){
-            buffer.append(message);
+        if (objects == null || !sensitiveProp.getLogInfo().getEnable()){
+            buffer.append(event.getFormattedMessage());
             return;
         }
+
         for (Object o : objects) {
             try {
-                FieldSensitiveUtil.dealNode(o, sensitiveProp);
+                FieldSensitiveUtil.dealNode(o,sensitiveProp);
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
-            message = message.replaceFirst("\\{\\}", JSONUtil.toJsonStr(o));
+            message = message.replaceFirst(Constants.LOG_DELIM, JSONUtil.toJsonStr(o));
         }
         buffer.append(message);
     }
