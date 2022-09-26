@@ -4,6 +4,7 @@
 
 package io.gitee.chemors.secure.ext.config;
 
+import io.gitee.chemors.secure.ext.log.core.LogDefenderConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,5 +27,10 @@ public class SensitiveConfig {
     @Bean
     public SensitiveProp sensitiveProp() {
         return new SensitiveProp();
+    }
+
+    @Bean
+    public LogDefenderConfiguration logDefenderConfiguration(){
+        return new LogDefenderConfiguration();
     }
 }

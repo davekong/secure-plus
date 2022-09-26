@@ -4,11 +4,9 @@
 
 package io.gitee.chemors.secure.ext.aspect;
 
-import cn.hutool.core.util.StrUtil;
 import io.gitee.chemors.secure.ext.annotations.Desensitization;
-import io.gitee.chemors.secure.ext.annotations.DesensitizationProp;
 import io.gitee.chemors.secure.ext.config.SensitiveProp;
-import io.gitee.chemors.secure.ext.util.MosDesensitizedUtil;
+import io.gitee.chemors.secure.ext.util.FieldSensitiveUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -18,11 +16,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * 敏感方面
@@ -77,78 +71,8 @@ public class SensitiveAspect {
      */
     public Object sensitiveFormat(ProceedingJoinPoint joinPoint) throws Throwable {
         Object obj = joinPoint.proceed();
-        dealNode(obj);
+        FieldSensitiveUtil.dealNode(obj,sensitiveProp);
         return obj;
     }
-
-    private void dealList(Object o) throws IllegalAccessException {
-        List<Object> list = (List<Object>) o;
-        for (Object obj : list) {
-            dealNode(obj);
-        }
-    }
-
-    private void dealMap(Object o) throws IllegalAccessException {
-        Map map = (Map) o;
-        Set<Map.Entry> entries=map.entrySet();
-        for (Map.Entry entry:entries){
-            if (entry.getValue() instanceof List){
-                dealList(entry.getValue());
-            }else{
-                dealNode(entry.getValue());
-            }
-        }
-    }
-
-    public void dealNode(Object o) throws IllegalAccessException {
-        if (o == null){
-            return;
-        }
-
-        if (o instanceof List){
-            dealList(o);
-            return;
-        }
-
-        if (o instanceof Map){
-            dealMap(o);
-            return;
-        }
-
-        boolean needDepthDeal = sensitiveProp.getDepth() && !StrUtil.isBlankIfStr(sensitiveProp.getPackages());
-        Field[] fields = o.getClass().getDeclaredFields();
-        for (Field field : fields){
-            field.setAccessible(true);
-            String type = field.getGenericType().toString();
-            Object fieldValueObj = field.get(o);
-            if (fieldValueObj instanceof List){
-                dealList(fieldValueObj);
-            }
-            // 递归子属性
-            if (needDepthDeal && containType(type)){
-                dealNode(fieldValueObj);
-            }
-
-            DesensitizationProp desensitizationProp = field.getAnnotation(DesensitizationProp.class);
-            if (desensitizationProp == null) {
-                continue;
-            }
-            String v = MosDesensitizedUtil.desensitizeData(fieldValueObj,desensitizationProp);
-            field.set(o, v);
-        }
-    }
-
-    private Boolean containType(String type){
-        String[] scanPackages = sensitiveProp.getPackages().split(",");
-        boolean isContainType = false;
-        for (String scanPackage : scanPackages){
-            if (type.contains(scanPackage)){
-                isContainType = true;
-                break;
-            }
-        }
-        return isContainType;
-    }
-
 
 }
