@@ -16,4 +16,9 @@ public class Constants {
 
     public static final String PACKAGES_SPLIT=",";
 
+    public static final String LOG_STR_SPLIT="^";
+
+    public static final String REG_START = "\\";
+
+
 }

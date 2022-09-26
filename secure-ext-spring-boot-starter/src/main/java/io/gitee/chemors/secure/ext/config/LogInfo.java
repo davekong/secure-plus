@@ -5,6 +5,9 @@
 package io.gitee.chemors.secure.ext.config;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * 日志信息
@@ -13,7 +16,11 @@ import lombok.Data;
  * @date 2022/09/26
  */
 @Data
+@NoArgsConstructor
 public class LogInfo {
 
     private Boolean enable = true;
+
+    private List<LogCategory> categories;
+
 }

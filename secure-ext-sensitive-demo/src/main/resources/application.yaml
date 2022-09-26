@@ -4,4 +4,15 @@ sensitive:
   depth: true
   packages: io.gitee.chemors.secure.ext,com.chemors
   log-info:
-    enable: false
+    enable: true
+    categories:
+      - keywords: name,chineseName
+        pre-length: 1
+        suf-length: 1
+      - keywords: mail,email
+        pre-length: 3
+        suf-length: 3
+      - keywords: mobile,phone
+        pre-length: 3
+        suf-length: 4
+

@@ -37,4 +37,22 @@ public class LoggerController {
 
         return mobile + "^" + name;
     }
+
+    @GetMapping("json")
+    public String logConvertByJson(String mobile,String name){
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.putOpt("name",name);
+        jsonObject.putOpt("mobile",mobile);
+
+        log.info("jsonObject is {} ",jsonObject);
+
+        return mobile + "^" + name;
+    }
+
+    @GetMapping("str")
+    public String logConvertByStr(String mobile,String name){
+        log.info("name is name^{} , and mobile is mobile^{}",name, mobile);
+        return mobile + "^" + name;
+    }
 }
