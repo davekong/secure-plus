@@ -8,7 +8,6 @@ package io.gitee.chemors.secure.ext.config;
  * 常量
  *
  * @author 小尘哥
- * @date 2022/09/26
  */
 public class Constants {
 

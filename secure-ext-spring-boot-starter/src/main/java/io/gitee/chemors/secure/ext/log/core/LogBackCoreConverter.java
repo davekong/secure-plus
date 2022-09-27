@@ -12,7 +12,6 @@ import io.gitee.chemors.secure.ext.log.defender.LogBackDefender;
  * 日志支持核心转换器
  *
  * @author 小尘哥
- * @date 2022/09/23
  */
 public class LogBackCoreConverter extends MessageConverter {
 

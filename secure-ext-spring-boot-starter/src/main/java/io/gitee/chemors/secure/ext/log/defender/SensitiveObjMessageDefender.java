@@ -18,7 +18,6 @@ import java.util.StringTokenizer;
  * 对象脱敏器
  *
  * @author 小尘哥
- * @date 2022/09/23
  */
 public class SensitiveObjMessageDefender implements LogBackDefender {
 

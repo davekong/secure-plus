@@ -10,7 +10,6 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
  * logback脱敏器
  *
  * @author 小尘哥
- * @date 2022/09/23
  */
 public interface LogBackDefender {
 

@@ -7,14 +7,11 @@ import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.Resource;
-
 
 /**
  * 日志脱敏配置类
  *
  * @author 小尘哥
- * @date 2022/09/26
  */
 @Configuration
 @ImportAutoConfiguration(LogDefenderConfiguration.class)

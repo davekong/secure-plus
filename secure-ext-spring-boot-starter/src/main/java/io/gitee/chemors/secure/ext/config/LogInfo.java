@@ -13,7 +13,6 @@ import java.util.List;
  * 日志信息
  *
  * @author 小尘哥
- * @date 2022/09/26
  */
 @Data
 @NoArgsConstructor
