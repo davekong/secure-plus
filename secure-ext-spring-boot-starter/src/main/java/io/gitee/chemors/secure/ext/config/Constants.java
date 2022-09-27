@@ -18,7 +18,7 @@ public class Constants {
 
     public static final String LOG_STR_SPLIT="^";
 
-    public static final String REG_START = "\\";
+    public static final String REG_LOG_STR_SPLIT = "\\" + LOG_STR_SPLIT;
 
 
 }

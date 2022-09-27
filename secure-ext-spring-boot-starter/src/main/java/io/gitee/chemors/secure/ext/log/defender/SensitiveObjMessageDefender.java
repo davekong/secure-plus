@@ -49,18 +49,17 @@ public class SensitiveObjMessageDefender implements LogBackDefender {
 
     private String buildStrParams(String str) {
         StringTokenizer stringTokenizer = new StringTokenizer(str, " ");
-        StringBuilder sb = new StringBuilder();
         while (stringTokenizer.hasMoreElements()) {
             String token = stringTokenizer.nextToken();
             if (!token.contains(Constants.LOG_STR_SPLIT)) {
                 continue;
             }
-            String[] arr = token.split(Constants.REG_START + Constants.LOG_STR_SPLIT);
+            String[] arr = token.split(Constants.REG_LOG_STR_SPLIT);
             String sensitiveStr = LogInfoCategoryUtil.format(arr[0], arr[1], sensitiveProp);
             if (StrUtil.isBlankIfStr(sensitiveStr)) {
                 continue;
             }
-            str = str.replaceFirst(arr[0] + Constants.REG_START + Constants.LOG_STR_SPLIT + arr[1], sensitiveStr);
+            str = str.replaceFirst(arr[0] + Constants.REG_LOG_STR_SPLIT + arr[1], sensitiveStr);
         }
         return str;
     }

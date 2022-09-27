@@ -15,4 +15,7 @@ sensitive:
       - keywords: mobile,phone
         pre-length: 3
         suf-length: 4
+      - keywords: address,addr
+        pre-length: 3
+        suf-length: 4
 
