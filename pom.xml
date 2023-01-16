@@ -60,7 +60,6 @@
         </dependencies>
     </dependencyManagement>
     <modules>
-        <module>secure-ext-spring-boot-starter</module>
         <module>secure-ext-sensitive-demo</module>
     </modules>
     <build>
