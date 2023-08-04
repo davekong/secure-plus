@@ -70,11 +70,10 @@ public class FieldSensitiveUtil {
                 dealNode(fieldValueObj, sensitiveProp);
             }
             DesensitizationProp desensitizationProp = field.getAnnotation(DesensitizationProp.class);
-            if (desensitizationProp == null) {
-                continue;
+            if (desensitizationProp != null) {
+                String v = MosDesensitizedUtil.desensitizeData(fieldValueObj, desensitizationProp);
+                field.set(o, v);
             }
-            String v = MosDesensitizedUtil.desensitizeData(fieldValueObj, desensitizationProp);
-            field.set(o, v);
         }
     }
 

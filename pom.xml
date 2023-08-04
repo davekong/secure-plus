@@ -8,59 +8,17 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.gitee.chemors</groupId>
     <artifactId>secure-ext-spring-boot</artifactId>
-    <version>2.0.0-RELEASE</version>
+    <version>2.0.1-RELEASE</version>
     <name>secure-ext-spring-boot</name>
     <description>secure-ext-spring-boot</description>
     <packaging>pom</packaging>
     <properties>
         <java.version>1.8</java.version>
-        <springboot.version>2.7.3</springboot.version>
-        <hutool-all.version>5.8.5</hutool-all.version>
-        <lombok.version>1.18.24</lombok.version>
     </properties>
     <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-aop</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${springboot.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool-all.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
-        </dependencies>
     </dependencyManagement>
     <modules>
-        <module>secure-ext-sensitive-demo</module>
     </modules>
     <build>
 

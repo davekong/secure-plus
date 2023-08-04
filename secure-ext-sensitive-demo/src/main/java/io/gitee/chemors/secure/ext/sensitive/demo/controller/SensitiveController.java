@@ -2,10 +2,13 @@
  * Copyright (c)  小尘哥. 2022-2024. All rights reserved.
  */
 
-package io.gitee.chemors.secure.ext.sensitive.demo;
+package io.gitee.chemors.secure.ext.sensitive.demo.controller;
 
 import cn.hutool.json.JSONUtil;
-import com.chemors.Page;
+import io.gitee.chemors.secure.ext.sensitive.demo.entity.SensitiveEntity;
+import io.gitee.chemors.secure.ext.sensitive.demo.service.SensitiveService;
+import io.gitee.chemors.secure.ext.sensitive.demo.base.Page;
+import io.gitee.chemors.secure.ext.annotations.Desensitization;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,9 +43,10 @@ public class SensitiveController {
     }
 
     @GetMapping("page")
-    public String page() {
-        Page page = sensitiveService.page();
-        return JSONUtil.toJsonStr(page);
+    @Desensitization
+    public Page<SensitiveEntity> page() {
+//        Page<SensitiveEntity> page = sensitiveService.page();
+        return sensitiveService.page();
     }
 
     @GetMapping("map")

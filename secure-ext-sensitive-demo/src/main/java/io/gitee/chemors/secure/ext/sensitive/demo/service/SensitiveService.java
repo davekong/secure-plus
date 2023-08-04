@@ -2,10 +2,13 @@
  * Copyright (c)  小尘哥. 2022-2024. All rights reserved.
  */
 
-package io.gitee.chemors.secure.ext.sensitive.demo;
+package io.gitee.chemors.secure.ext.sensitive.demo.service;
 
-import com.chemors.Page;
+import io.gitee.chemors.secure.ext.sensitive.demo.base.Page;
 import io.gitee.chemors.secure.ext.annotations.Desensitization;
+import io.gitee.chemors.secure.ext.sensitive.demo.entity.SensitiveEntity;
+import io.gitee.chemors.secure.ext.sensitive.demo.entity.SensitiveGrandSonEntity;
+import io.gitee.chemors.secure.ext.sensitive.demo.entity.SensitiveSubEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +34,9 @@ public class SensitiveService {
         return list;
     }
 
-    @Desensitization
-    public Page page() {
-        Page page = new Page();
+
+    public Page<SensitiveEntity> page() {
+        Page<SensitiveEntity> page = new Page<SensitiveEntity>();
         page.setCurrent(1);
         page.setSize(10);
         page.setRecords(listData());
