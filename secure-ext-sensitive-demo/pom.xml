@@ -7,7 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.gitee.chemors</groupId>
-    <version>2.0.1-RELEASE</version>
+    <version>2.0.2-RELEASE</version>
     <artifactId>secure-ext-sensitive-demo</artifactId>
     <packaging>jar</packaging>
 
@@ -22,13 +22,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.7.3</version>
+            <version>2.7.18</version>
         </dependency>
 
         <dependency>
             <groupId>io.gitee.chemors</groupId>
             <artifactId>secure-ext-spring-boot-starter</artifactId>
-            <version>2.0.1-RELEASE</version>
+            <version>2.0.2-RELEASE</version>
         </dependency>
 
     </dependencies>
